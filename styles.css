@@ -1,7 +1,7 @@
 @font-face {
   font-family: ManegeDemo;
-  src: url(/fonts/ManegeDemo-Light.woff2) format('woff2'),
-    url(/fonts/ManegeDemo-Light.ttf) format('truetype');
+  src: url(./fonts/ManegeDemo-Light.woff2) format('woff2'),
+    url(./fonts/ManegeDemo-Light.ttf) format('truetype');
 }
 
 @keyframes zoom {
