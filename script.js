@@ -108,3 +108,24 @@ document.addEventListener('DOMContentLoaded', function() {
   setViewportHeight();
   window.addEventListener('resize', setViewportHeight);
 });
+
+
+
+document.addEventListener('DOMContentLoaded', function() {
+  const header = document.querySelector('.header');
+  
+  window.addEventListener('scroll', function() {
+    if (window.scrollY > window.innerHeight * 0.1) { 
+      header.classList.add('scrolled');
+      header.classList.remove('transparent');
+    } else {
+      header.classList.remove('scrolled');
+      header.classList.add('transparent');
+    }
+  });
+  
+  // Инициализация при загрузке
+  if (window.scrollY === 0) {
+    header.classList.add('transparent');
+  }
+});

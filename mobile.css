@@ -1,14 +1,21 @@
-/* Мобильная версия */
 @media (max-width: 768px) {
+  @font-face {
+    font-family: ManegeDemo;
+    src: url(/fonts/ManegeDemo-Light.woff2) format('woff2'),
+         url(/fonts/ManegeDemo-Light.ttf) format('truetype');
+  }
+
   html {
     font-size: 14px;
   }
 
   body {
     padding-top: 70px; /* Добавляем отступ для фиксированного header */
+    font-family: ManegeDemo;
   }
 
   .header {
+    font-family: ManegeDemo;
     width: 100%;
     border-radius: 0;
     margin-top: 0;
@@ -77,7 +84,7 @@
     display: block;
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: antiquewhite;
     position: relative;
     transition: all 0.3s ease;
   }
@@ -88,7 +95,7 @@
     position: absolute;
     width: 25px;
     height: 3px;
-    background-color: white;
+    background-color: antiquewhite;
     transition: all 0.3s ease;
   }
 
@@ -125,9 +132,8 @@
   .heading {
     font-size: 1.3rem;
     text-align: center;
-    padding: 0;
-    margin-top: 0;
     order: 2; /* Текст будет первым */
+    font-family: ManegeDemo;
   }
 
   .portrait {
@@ -160,7 +166,6 @@
     font-size: 30px;
     top: 20px;
   }
-}
 
 .marker-item {
   gap: 30px;
@@ -168,7 +173,7 @@
 
 .address {
   font-size: 22px;
-  color: black;
+  color: antiquewhite;
   display: flex;
   align-self: center;
   justify-items: start;
@@ -185,4 +190,6 @@
 .address p a img {
   align-items: center;
   width: 50px;
+}
+
 }
