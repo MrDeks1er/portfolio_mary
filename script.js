@@ -196,7 +196,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 document.addEventListener('DOMContentLoaded', function() {
   const scrollBtn = document.querySelector('.scroll-top-btn');
-  const scrollTrigger = window.innerHeight * 1.5; // Появляется после прокрутки 1.5 экранов
+  const scrollTrigger = window.innerHeight * 1; // Появляется после прокрутки 1.5 экранов
   
   if (scrollBtn) {
     // Прокрутка вверх
