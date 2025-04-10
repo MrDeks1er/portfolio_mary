@@ -156,15 +156,9 @@
     max-height: 500px;
   }
 
-  .modal-image {
-    width: 95%;
-    height: auto;
-  }
-
-  .close-modal {
-    right: 15px;
-    font-size: 30px;
-    top: 20px;
+  .modal {
+    display: flex;
+    flex-direction: column;
   }
 
 .marker-item {
