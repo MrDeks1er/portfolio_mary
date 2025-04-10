@@ -31,55 +31,63 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 
-  // ==================== Модальное окно для изображений ====================
+  document.addEventListener('DOMContentLoaded', function() {
   const modal = document.getElementById('imageModal');
   const modalImg = document.getElementById('expandedImage');
+  const modalTitle = document.querySelector('.image-title');
+  const modalDesc = document.querySelector('.image-description');
   const closeBtn = document.querySelector('.close-modal');
 
-  if (modal && modalImg && closeBtn) {
-    // Открытие модального окна
-    document.querySelectorAll('.images img, .first img').forEach(img => {
-      img.addEventListener('click', function() {
-        modal.style.display = 'block';
-        modalImg.src = this.src;
-        document.body.classList.add('no-scroll');
-        
-        // Адаптация размера изображения
-        const imgRatio = this.naturalWidth / this.naturalHeight;
-        const windowRatio = window.innerWidth / window.innerHeight;
-        
-        if (imgRatio > windowRatio) {
+  // Проверка элементов
+  if (!modal || !modalImg || !closeBtn) {
+      console.error('Modal elements not found');
+      return;
+  }
+
+  function openModal(img) {
+      // Устанавливаем контент
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalTitle.textContent = img.dataset.title || img.alt;
+      modalDesc.textContent = img.dataset.description || 'Описание отсутствует';
+      
+      // Активируем модалку
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Адаптация размера
+      const imgRatio = img.naturalWidth / img.naturalHeight;
+      const windowRatio = window.innerWidth / window.innerHeight;
+      
+      if (imgRatio > windowRatio) {
           modalImg.style.width = '90%';
           modalImg.style.height = 'auto';
-        } else {
-          modalImg.style.height = '90%';
+      } else {
+          modalImg.style.height = '80vh';
           modalImg.style.width = 'auto';
-        }
-      });
-    });
-
-    // Закрытие модального окна
-    closeBtn.addEventListener('click', function() {
-      modal.style.display = 'none';
-      document.body.classList.remove('no-scroll');
-    });
-
-    // Закрытие по клику вне изображения
-    modal.addEventListener('click', function(e) {
-      if (e.target === modal) {
-        modal.style.display = 'none';
-        document.body.classList.remove('no-scroll');
       }
-    });
-
-    // Закрытие по ESC
-    document.addEventListener('keydown', function(e) {
-      if (e.key === 'Escape' && modal.style.display === 'block') {
-        modal.style.display = 'none';
-        document.body.classList.remove('no-scroll');
-      }
-    });
   }
+
+  // Функция закрытия
+  function closeModal() {
+    modal.classList.add('closing');
+    document.body.style.overflow = '';
+    
+    setTimeout(() => {
+        modal.classList.remove('active', 'closing');
+    }, 0); // Должно соответствовать самой длинной анимации
+}
+
+  // Назначение обработчиков
+  document.querySelectorAll('.images img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => openModal(img));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => e.target === modal && closeModal());
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && modal.classList.contains('active') && closeModal());
+});
 
   // ==================== Плавная прокрутка ====================
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -109,7 +117,63 @@ document.addEventListener('DOMContentLoaded', function() {
   window.addEventListener('resize', setViewportHeight);
 });
 
+document.addEventListener('DOMContentLoaded', function() {
+  const modal = document.getElementById('imageModal');
+  const modalImg = document.getElementById('expandedImage');
+  const modalTitle = document.querySelector('.image-title');
+  const modalDesc = document.querySelector('.image-description');
+  const closeBtn = document.querySelector('.close-modal');
 
+  // Проверка элементов
+  if (!modal || !modalImg || !closeBtn) {
+      console.error('Modal elements not found');
+      return;
+  }
+
+  function openModal(img) {
+      // Устанавливаем контент
+      modalImg.src = img.src;
+      modalImg.alt = img.alt;
+      modalTitle.textContent = img.dataset.title || img.alt;
+      modalDesc.textContent = img.dataset.description || 'Описание отсутствует';
+      
+      // Активируем модалку
+      modal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      
+      // Адаптация размера
+      const imgRatio = img.naturalWidth / img.naturalHeight;
+      const windowRatio = window.innerWidth / window.innerHeight;
+      
+      if (imgRatio > windowRatio) {
+          modalImg.style.width = '90%';
+          modalImg.style.height = 'auto';
+      } else {
+          modalImg.style.height = '80vh';
+          modalImg.style.width = 'auto';
+      }
+  }
+
+  // Функция закрытия
+  function closeModal() {
+    modal.classList.add('closing');
+    document.body.style.overflow = '';
+    
+    setTimeout(() => {
+        modal.classList.remove('active', 'closing');
+    }, 0); // Должно соответствовать самой длинной анимации
+}
+
+  // Назначение обработчиков
+  document.querySelectorAll('.images img').forEach(img => {
+      img.style.cursor = 'pointer';
+      img.addEventListener('click', () => openModal(img));
+  });
+
+  closeBtn.addEventListener('click', closeModal);
+  modal.addEventListener('click', (e) => e.target === modal && closeModal());
+  document.addEventListener('keydown', (e) => e.key === 'Escape' && modal.classList.contains('active') && closeModal());
+});
 
 document.addEventListener('DOMContentLoaded', function() {
   const header = document.querySelector('.header');
@@ -127,5 +191,34 @@ document.addEventListener('DOMContentLoaded', function() {
   // Инициализация при загрузке
   if (window.scrollY === 0) {
     header.classList.add('transparent');
+  }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+  const scrollBtn = document.querySelector('.scroll-top-btn');
+  const scrollTrigger = window.innerHeight * 1.5; // Появляется после прокрутки 1.5 экранов
+  
+  if (scrollBtn) {
+    // Прокрутка вверх
+    scrollBtn.addEventListener('click', function() {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+    
+    // Показ/скрытие кнопки
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > scrollTrigger) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    });
+    
+    // Проверка при загрузке
+    if (window.scrollY > scrollTrigger) {
+      scrollBtn.classList.add('visible');
+    }
   }
 });

@@ -34,8 +34,8 @@
         <nav>
             <ul class="navigation">
                 <li class="nav-item"><a href="#sertification">Сертификаты</a></li>
-                <li class="nav-item"><a href="">Подробнее</a></li>
-                <li class="nav-item"><a href="">Контакты</a></li>
+                <li class="nav-item"><a href="#text-info">Подробнее</a></li>
+                <li class="nav-item"><a href="#end">Контакты</a></li>
             </ul>
         </nav>
     </header>
@@ -52,26 +52,31 @@
             </section>
         </div>
         <section class="images" id="sertification">
-            <img src="src/portfolio/1.png" alt="Сертификат №1" />
-            <img src="src/portfolio/2.png" alt="Сертификат №2" />
-            <img src="src/portfolio/3.png" alt="Сертификат №3" />
-            <img src="src/portfolio/4.png" alt="Сертификат №4" />
-            <img src="src/portfolio/5.png" alt="Сертификат №5" />
-            <img src="src/portfolio/6.png" alt="Сертификат №6" />
-            <img src="src/portfolio/7.png" alt="Сертификат №7" />
-            <img src="src/portfolio/8.png" alt="Сертификат №8" />
-            <img src="src/portfolio/9.png" alt="Сертификат №9" />
-            <img src="src/portfolio/10.png" alt="Сертификат №10" />
-            <img src="src/portfolio/11.png" alt="Сертификат №11" />
-            <img src="src/portfolio/12.png" alt="Сертификат №12" />
-            <img src="src/portfolio/13.png" alt="Сертификат №13" />
-            <img src="src/portfolio/14.png" alt="Сертификат №14" />
+            <img src="src/portfolio/1.png" alt="Сертификат №1" data-title="Сертификат №1" data-description="Какой-то текст, бла бла бла бла бла1"/>
+            <img src="src/portfolio/2.png" alt="Сертификат №2" data-title="Сертификат №2" data-description="Какой-то текст, бла бла бла бла бла2"/>
+            <img src="src/portfolio/3.png" alt="Сертификат №3" data-title="Сертификат №3" data-description="Какой-то текст, бла бла бла бла бла3"/>
+            <img src="src/portfolio/4.png" alt="Сертификат №4" data-title="Сертификат №4" data-description="Какой-то текст, бла бла бла бла бла4"/>
+            <img src="src/portfolio/5.png" alt="Сертификат №5" data-title="Сертификат №5" data-description="Какой-то текст, бла бла бла бла бла5"/>
+            <img src="src/portfolio/6.png" alt="Сертификат №6" data-title="Сертификат №6" data-description="Какой-то текст, бла бла бла бла бла6"/>
+            <img src="src/portfolio/7.png" alt="Сертификат №7" data-title="Сертификат №7" data-description="Какой-то текст, бла бла бла бла бла7"/>
+            <img src="src/portfolio/8.png" alt="Сертификат №8" data-title="Сертификат №8" data-description="Какой-то текст, бла бла бла бла бла8"/>
+            <img src="src/portfolio/9.png" alt="Сертификат №9" data-title="Сертификат №9" data-description="Какой-то текст, бла бла бла бла бла9"/>
+            <img src="src/portfolio/10.png" alt="Сертификат №10" data-title="Сертификат №10" data-description="Какой-то текст, бла бла бла бла бла10"/>
+            <img src="src/portfolio/11.png" alt="Сертификат №11" data-title="Сертификат №11" data-description="Какой-то текст, бла бла бла бла бла11"/>
+            <img src="src/portfolio/12.png" alt="Сертификат №12" data-title="Сертификат №12" data-description="Какой-то текст, бла бла бла бла бла12"/>
+            <img src="src/portfolio/13.png" alt="Сертификат №13" data-title="Сертификат №13" data-description="Какой-то текст, бла бла бла бла бла13"/>
+            <img src="src/portfolio/14.png" alt="Сертификат №14" data-title="Сертификат №14" data-description="Какой-то текст, бла бла бла бла бла14"/>
         </section>
         <div id="imageModal" class="modal">
             <span class="close-modal">&times;</span>
-            <img class="modal-image" id="expandedImage" />
+            <img class="modal-image" id="expandedImage"/>
+            <div class="image-info">
+                <h3 class="image-title"></h3>
+                <p class="image-description">Какой-то текст, бла бла бла бла бла0</p>
+            </div>
         </div>
-        <section class="text-info">
+        </div>
+        <section class="text-info" id="text-info">
             <ul class="text-group">
                 <h3>Фестивали, творческие школы</h3>
                 <li class="marker-item">
@@ -167,7 +172,8 @@
             </ul>
         </section>
     </div>
-    <footer class="end">
+    <button class="scroll-top-btn" aria-label="Наверх"></button>
+    <footer class="end" id="end">
         <address class="address">
             <p class="contact">
                 <a href="mailto:maryviolinov@gmail.com?subject=Вопрос по портфолио&ищвн=Здравствуйте, Мария!"
